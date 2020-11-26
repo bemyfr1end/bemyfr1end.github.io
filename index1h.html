@@ -9,30 +9,79 @@
         <link href="https://www.cssscript.com/wp-includes/css/sticky.css" rel="stylesheet" type="text/css">
         <link rel="stylesheet" type="text/css" href="style.css">
     </head>
-    <body><div id="css-script-menu">
-  <div class="css-script-center">
-    <ul>
-      <li><a href="https://www.cssscript.com/audio-visualizer-with-html5-audio-element/">Download</a></li>
-      <li><a href="https://www.cssscript.com/">Back To CSS Script</a></li>
-    </ul>
-    <div class="css-script-ads"><script type="text/javascript"><!--
-google_ad_client = "ca-pub-2783044520727903";
-/* CSSScript Demo Page */
-google_ad_slot = "3025259193";
-google_ad_width = 728;
-google_ad_height = 90;
-//-->
-</script>
-      <script type="text/javascript"
-src="//pagead2.googlesyndication.com/pagead/show_ads.js">
-</script></div>
-    <div class="css-script-clear"></div>
-  </div>
-</div>
+    <body>
     <h1 style="margin-top:150px;">Html5 Audio Visualizer Demo</h1>
         <canvas id='canvas' width="800" height="350"></canvas>
         <br>
         <br> 
+		<div id="watson" class="watson">
+        <div class="mensagens">
+            <div class="area" id="chat">
+            </div>
+        </div>
+        <form id="mensagem" class="mensagem">
+            <input type="text" id="texto" name="texto" placeholder="Digite sua mensagem" />
+            <button type="submit">Enviar</button>
+        </form>
+        <script type="text/javascript" src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+        <script type="text/javascript">
+            $("#mensagem").submit(function () {
+                if ($("#mensagem #texto").val() === "") {
+                    $("#chat").append("<div class=\"texto usuario\">...</div>");
+                    $(".mensagens").animate({ scrollTop: $("#chat").height() });
+                    setTimeout(function () {
+                        //Adiciona uma resposta padrão afirmando que o usuário deixou o campo vazio
+                        $("#chat").append("<div class=\"texto chatbot\">Você precisa digitar alguma coisa para prosseguir.</div>");
+                        $(".mensagens").animate({ scrollTop: $("#chat").height() });
+                    }, 1000);
+                    return false;
+                }
+
+                var gambi2 = document.getElementById("texto").value;
+
+                var gambi = JSON.stringify({
+                    "input": {
+                        "text": gambi2
+                    }
+                });
+                console.log(gambi);
+                //Inicia método AJAX
+                $.ajax({
+                    type: 'POST',
+                    url: "https://gateway.watsonplatform.net/assistant/api/v1/workspaces/5898ea81-31ea-49e4-b43e-1e9c765839c8/message?version=2018-08-28",
+                    dataType: 'json', // Determina o tipo de retorno
+                    contentType: 'application/json',
+                    data: gambi,
+                    beforeSend: function (xhr) {
+                        xhr.setRequestHeader("Authorization", "Basic " + btoa("00647b1b-ca45-4fd4-9c32-9e5c822f2703" + ":" + "eKWVoPisvLkb"));
+                        $("#chat").append("<div class=\"texto usuario\">" + $("#mensagem #texto").val() + "</div>");
+                    },
+                    success: function (resposta) {
+                        $("#mensagem #texto").val("");
+                        $("#mensagem #texto").focus();
+
+                        if (resposta.error) {
+                            $("#chat").append("<div class=\"texto chatbot\">" + resposta.error + "</div>");
+                            return false;
+                        }
+
+                        var mensagemChatbot = "<div class=\"texto chatbot\">";
+                        mensagemChatbot += resposta.output.text[0];
+                        mensagemChatbot += "</div>";
+                        setTimeout(function () {
+                            $("#chat").append(mensagemChatbot);
+                            $(".mensagens").animate({ scrollTop: $("#chat").height() });
+                        }, 1000);
+                    },
+                    error: function (error) {
+                        console.log(error);
+                    }
+                });
+
+                return false;
+            });
+        </script>
+    </div>
         <audio src="hello_world.mp3" id="audio" controls>audio element not supported</audio>
         <script src="https://www.cssscript.com/demo/audio-visualizer-with-html5-audio-element/main.js"></script><script>
   (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
