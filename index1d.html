@@ -2,6 +2,7 @@
 <!doctype html>
 <html>
 <head>
+
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
 <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -10,12 +11,46 @@
         <link rel="stylesheet" type="text/css" href="style.css">
     </head>
     <body><div id="css-script-menu">
+	<button id="play" disabled>Yodel!</button>
+    
+  
+      <script id="rendered-js" >
+(function () {
+  'use strict';
+
+  const URL = 'hello_world.mp3';
+
+  const context = new AudioContext();
+  const playButton = document.querySelector('#play');
+
+  let yodelBuffer;
+
+  window.fetch(URL).
+  then(response => response.arrayBuffer()).
+  then(arrayBuffer => context.decodeAudioData(arrayBuffer)).
+  then(audioBuffer => {
+    playButton.disabled = false;
+    yodelBuffer = audioBuffer;
+  });
+
+  playButton.onclick = () => play(yodelBuffer);
+
+  function play(audioBuffer) {
+    const source = context.createBufferSource();
+    source.buffer = audioBuffer;
+    source.connect(context.destination);
+    source.start();
+  }
+})();
+
+    </script>
+
   <div class="css-script-center">
     <ul>
       <li><a href="https://www.cssscript.com/audio-visualizer-with-html5-audio-element/">Download</a></li>
       <li><a href="https://www.cssscript.com/">Back To CSS Script</a></li>
     </ul>
-	
+   
     <div class="css-script-clear"></div>
   </div>
 </div>
@@ -24,6 +59,6 @@
         <br>
         <br>
         <audio src="dude3.mp3" id="audio" controls>audio element not supported</audio>
-        <script src="https://www.cssscript.com/demo/audio-visualizer-with-html5-audio-element/main.js"></script>
+      <!--  <script src="main.js"></script> -->
     </body>
 </html>
