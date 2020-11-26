@@ -1,0 +1,1 @@
+curl -X POST -u "apikey:642FiYJ7BIbqXprEIjWzIGp92nmfIlhL_9cIFTqtEsEC" --header "Content-Type: application/json" --header "Accept: audio/wav" --data "{\"text\":\"I Like TO take it in the arse\"}" --output hello_world.wav "https://api.eu-gb.text-to-speech.watson.cloud.ibm.com/instances/e4f07e25-8632-4131-95b3-e3b5571610d2/v1/synthesize"
