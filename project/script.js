@@ -1,7 +1,7 @@
 $(function() {
   $("button").click(function() {
     $.ajax({
-      url: "https://bemyfr1end.herokuapp.com/test2.wav",
+      url: "https://cors-anywhere.herokuapp.com/https://bemyfr1end.herokuapp.com/test2.wav",
       type: "GET",
       dataType: 'binary',
       success: function(result) {
