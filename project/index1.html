@@ -225,7 +225,7 @@ canvas { border: 1px solid black; display: block; }
                     $(".mensagens").animate({ scrollTop: $("#chat").height() });
                     setTimeout(function () {
                         //Adiciona uma resposta padrão afirmando que o usuário deixou o campo vazio
-                        $("#chat").append("<div class=\"texto chatbot\">Você precisa digitar alguma coisa para prosseguir.</div>");
+                        $("#chat").append("<div class=\"texto chatbot\">Unfortunely I didn't get that. Please try again</div>");
                         $(".mensagens").animate({ scrollTop: $("#chat").height() });
                     }, 1000);
                     return false;
