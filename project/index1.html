@@ -276,8 +276,10 @@ canvas { border: 1px solid black; display: block; }
 						//var cookie2 = "JSESSIONID=" + resp.sessionid;
 						document.cookie = cookie1;
 						//document.cookie = cookie2;
+						var xy = document.cookie;
                         var mensagemChatbot = "<div class=\"texto chatbot\">";
-                        mensagemChatbot += resposta.message;
+                        mensagemChatbot += xy;
+						mensagemChatbot += resposta.message;
                         mensagemChatbot += "</div>";
                         setTimeout(function () {
                             $("#chat").append(mensagemChatbot);
