@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title></title>
+</head>
+<body>
+
+    <audio controls>
+        <source id="source" src="" type="audio/mpeg">
+        Your browser does not support the audio element.
+    </audio>
+
+    <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+    <script type="text/javascript">
+        $.ajax({
+            url: 'get.php',
+            data: { attr1: 'value1' },
+            success: function( data ) {
+                console.log(data);
+                $('audio #source').attr('src', data);
+                $('audio').get(0).load();
+                $('audio').get(0).play();
+            }
+        });
+    </script>
+</body>
+</html>
