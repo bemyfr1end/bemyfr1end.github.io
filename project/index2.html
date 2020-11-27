@@ -18,6 +18,7 @@
             success: function( data ) {
                 console.log(data);
                 $('audio #source').attr('src', data);
+				$('audio #source').attr('crossOrigin' , 'anonymous');
                 $('audio').get(0).load();
                 $('audio').get(0).play();
             }
