@@ -260,7 +260,7 @@ canvas { border: 1px solid black; display: block; }
                         }
 
                         var mensagemChatbot = "<div class=\"texto chatbot\">";
-                        mensagemChatbot += resposta;
+                        mensagemChatbot += resposta.message;
                         mensagemChatbot += "</div>";
                         setTimeout(function () {
                             $("#chat").append(mensagemChatbot);
