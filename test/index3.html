@@ -1,0 +1,29 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+    <style>
+        
+    </style>
+    <script src="/scripts/snippet-javascript-console.min.js?v=1"></script>
+</head>
+<body>
+    <a href="#" onclick="playAudio()">Play Audio</a>
+    <script type="text/javascript">
+        
+        window.AudioContext = window.AudioContext || window.webkitAudioContext || window.mozAudioContext;
+        
+        async function playAudio() {
+  var audio = new Audio('https://bemyfr1end.herokuapp.com/test2.wav');  
+  audio.type = 'audio/wav';
+          
+  try {
+    await audio.play();
+    console.log('Playing...');
+  } catch (err) {
+    console.log('Failed to play...' + err);
+  }
+}
+    </script>
+</body>
+</html>
