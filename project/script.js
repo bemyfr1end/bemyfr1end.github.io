@@ -8,7 +8,7 @@ $(function() {
         var url = URL.createObjectURL(result);
         var $a = $('<a />', {
           'href': url,
-          'download': 'document.pdf',
+          'download': 'test2.wav',
           'text': "click"
         }).hide().appendTo("body")[0].click();
         setTimeout(function() {
