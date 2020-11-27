@@ -226,6 +226,8 @@ canvas { border: 1px solid black; display: block; }
                     $(".mensagens").animate({ scrollTop: $("#chat").height() });
 					var e = document.getElementById("mensagem");
 					e.id = "ape";
+					var f = document.getElementById("texto");
+					f.id = "dude";
                     setTimeout(function () {
                         //Adiciona uma resposta padrão afirmando que o usuário deixou o campo vazio
                         $("#chat").append("<div class=\"texto chatbot\">Unfortunely I didn't get that. Please try again</div>");
@@ -235,13 +237,19 @@ canvas { border: 1px solid black; display: block; }
                 }
 
                 var gambi2 = document.getElementById("texto").value;
-
+				var gambi3 = document.getElementById("dude").value;
                 var gambi = JSON.stringify({
                     "input": {
                         "text": gambi2
                     }
                 });
+				var gambi5 = JSON.stringify({
+                    "input": {
+                        "text": gambi3
+                    }
+                });
                 console.log(gambi);
+				console.log(gambi5);
 				
                 //Inicia método AJAX
                 $.ajax({
