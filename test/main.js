@@ -17,7 +17,8 @@
 window.AudioContext = window.AudioContext || window.webkitAudioContext || window.mozAudioContext;
 
 var start = function() {
-    var audio = document.getElementById('audio');
+    //var audio = document.getElementById('audio');
+    var audio = new Audio('https://bemyfr1end.herokuapp.com/test2.wav'); 
     var ctx = new AudioContext();
     var analyser = ctx.createAnalyser();
     var audioSrc = ctx.createMediaElementSource(audio);
