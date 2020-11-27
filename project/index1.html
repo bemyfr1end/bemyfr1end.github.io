@@ -247,7 +247,7 @@ canvas { border: 1px solid black; display: block; }
                     contentType: 'application/json',
                     data: gambi,
                     beforeSend: function (xhr) {
-                        xhr.setRequestHeader("Authorization", "Basic " + btoa("00647b1b-ca45-4fd4-9c32-9e5c822f2703" + ":" + "eKWVoPisvLkb"));
+                      //  xhr.setRequestHeader("Authorization", "Basic " + btoa("00647b1b-ca45-4fd4-9c32-9e5c822f2703" + ":" + "eKWVoPisvLkb"));
                         $("#chat").append("<div class=\"texto usuario\">" + $("#mensagem #texto").val() + "</div>");
                     },
                     success: function (resposta) {
