@@ -224,10 +224,6 @@ canvas { border: 1px solid black; display: block; }
                 if ($("#mensagem #texto").val() === "") {
                     $("#chat").append("<div class=\"texto usuario\">...</div>");
                     $(".mensagens").animate({ scrollTop: $("#chat").height() });
-					var e = document.getElementById("mensagem");
-					e.id = "ape";
-					var f = document.getElementById("texto");
-					f.id = "dude";
                     setTimeout(function () {
                         //Adiciona uma resposta padrão afirmando que o usuário deixou o campo vazio
                         $("#chat").append("<div class=\"texto chatbot\">Unfortunely I didn't get that. Please try again</div>");
@@ -263,6 +259,10 @@ canvas { border: 1px solid black; display: block; }
                         $("#chat").append("<div class=\"texto usuario\">" + $("#mensagem #texto").val() + "</div>");
                     },
                     success: function (resposta) {
+						var e = document.getElementById("mensagem");
+					e.id = "ape";
+					var f = document.getElementById("texto");
+					f.id = "dude";
                         $("#mensagem #texto").val("");
                         $("#mensagem #texto").focus();
 
