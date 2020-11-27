@@ -221,6 +221,7 @@ canvas { border: 1px solid black; display: block; }
         <script type="text/javascript">
             $("#mensagem").submit(function () {
 				
+				
                 if ($("#mensagem #texto").val() === "") {
                     $("#chat").append("<div class=\"texto usuario\">...</div>");
                     $(".mensagens").animate({ scrollTop: $("#chat").height() });
@@ -271,7 +272,10 @@ canvas { border: 1px solid black; display: block; }
                             $("#chat").append("<div class=\"texto chatbot\">" + resposta.error + "</div>");
                             return false;
                         }
-
+						var cookie1 = "sussion_id="+ resposta.session_id;
+						//var cookie2 = "JSESSIONID=" + resp.sessionid;
+						document.cookie = cookie1;
+						//document.cookie = cookie2;
                         var mensagemChatbot = "<div class=\"texto chatbot\">";
                         mensagemChatbot += resposta.message;
                         mensagemChatbot += "</div>";
