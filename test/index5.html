@@ -7,8 +7,7 @@ div#mp3_player > div > audio{  width:500px; background:#000; float:left;  }
 div#mp3_player > canvas{ width:500px; height:30px; background:#002D3C; float:left; }
 </style>
 <script>
-	
-	window.AudioContext = window.AudioContext || window.webkitAudioContext;
+window.AudioContext = window.AudioContext || window.webkitAudioContext || window.mozAudioContext;
 // Create a new instance of an audio object and adjust some of its properties
 var audio = new Audio();
 audio.src = '/hello_world.mp3';
