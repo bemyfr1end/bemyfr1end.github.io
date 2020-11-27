@@ -233,19 +233,20 @@ canvas { border: 1px solid black; display: block; }
                 }
 
                 var gambi2 = document.getElementById("texto").value;
-				var gambi3 = document.getElementById("dude").value;
+				//var gambi3 = document.getElementById("dude").value;
                 var gambi = JSON.stringify({
                     "input": {
                         "text": gambi2
                     }
                 });
-				var gambi5 = JSON.stringify({
+				/*var gambi5 = JSON.stringify({
                     "input": {
                         "text": gambi3
                     }
                 });
-                console.log(gambi);
 				console.log(gambi5);
+				*/
+                console.log(gambi);
 				
                 //Inicia método AJAX
                 $.ajax({
