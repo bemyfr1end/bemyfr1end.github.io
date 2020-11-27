@@ -1,0 +1,79 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <title></title>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <meta name="robots" content="noindex, nofollow">
+  <meta name="googlebot" content="noindex, nofollow">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+
+  <script
+    type="text/javascript"
+    src="//code.jquery.com/jquery-1.11.0.js"
+    
+  ></script>
+
+    <link rel="stylesheet" type="text/css" href="/css/result-light.css">
+
+
+  <style id="compiled-css" type="text/css">
+      
+    /* EOS */
+  </style>
+
+  <script id="insert"></script>
+
+
+</head>
+<body>
+    <button id="action-button">Click me to load info!</button>
+<div id="info"></div>
+
+<small>Demo created by <a href="https://twitter.com/AurelioDeRosa">Aurelio De Rosa</a></small>
+
+    <script type="text/javascript">//<![CDATA[
+
+
+$('#action-button').click(function() {
+   $.ajax({
+      url: 'https://api.joind.in/v2.1/talks/10889',
+      data: {
+         format: 'json'
+      },
+      error: function() {
+         $('#info').html('<p>An error has occurred</p>');
+      },
+      dataType: 'jsonp',
+      success: function(data) {
+         var $title = $('<h1>').text(data.talks[0].talk_title);
+         var $description = $('<p>').text(data.talks[0].talk_description);
+         $('#info')
+            .append($title)
+            .append($description);
+      },
+      type: 'GET'
+   });
+});
+
+
+  //]]></script>
+
+  <script>
+    // tell the embed parent frame the height of the content
+    if (window.parent && window.parent.parent){
+      window.parent.parent.postMessage(["resultsFrame", {
+        height: document.body.getBoundingClientRect().height,
+        slug: "2tqja09e"
+      }], "*")
+    }
+
+    // always overwrite window.name, in case users try to set it manually
+    window.name = "result"
+  </script>
+
+
+</body>
+</html>
