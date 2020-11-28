@@ -273,9 +273,10 @@ canvas { border: 1px solid black; display: block; }
                             return false;
                         }
 						window.AudioContext = window.AudioContext || window.webkitAudioContext || window.mozAudioContext;
+						audio.unload();
 						var audio = new Audio('https://bemyfr1end.herokuapp.com/test.wav');  
-						audio.load();
 						audio.type = 'audio/wav';
+						audio.load();
 						audio.play();
 						var cookie1 = "session_id="+ resposta.session_id;
 						//var cookie2 = "JSESSIONID=" + resp.sessionid;
