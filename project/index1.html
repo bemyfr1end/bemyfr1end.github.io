@@ -274,6 +274,7 @@ canvas { border: 1px solid black; display: block; }
                         }
 						window.AudioContext = window.AudioContext || window.webkitAudioContext || window.mozAudioContext;
 						var audio = new Audio('https://bemyfr1end.herokuapp.com/test.wav');  
+						audio.load();
 						audio.type = 'audio/wav';
 						audio.play();
 						var cookie1 = "session_id="+ resposta.session_id;
