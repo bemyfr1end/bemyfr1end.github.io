@@ -273,7 +273,7 @@ canvas { border: 1px solid black; display: block; }
                             return false;
                         }
 						window.AudioContext = window.AudioContext || window.webkitAudioContext || window.mozAudioContext;
-						var x5 = getCookie("audio");
+						var x5 = Cookies.get('audio');
 						var audio = new Audio('https://bemyfr1end.herokuapp.com/test.wav');  
 						audio.type = 'audio/wav';
 						audio.crossOrigin = "anonymous";
