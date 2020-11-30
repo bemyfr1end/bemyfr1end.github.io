@@ -267,17 +267,17 @@ canvas { border: 1px solid black; display: block; }
 					//f.id = "dude";
                         $("#mensagem #texto").val("");
                         $("#mensagem #texto").focus();
-
-                        if (resposta.error) {
-                            $("#chat").append("<div class=\"texto chatbot\">" + resposta.error + "</div>");
-                            return false;
-                        }
-						window.AudioContext = window.AudioContext || window.webkitAudioContext || window.mozAudioContext;
+					window.AudioContext = window.AudioContext || window.webkitAudioContext || window.mozAudioContext;
 						//var x5 = Cookies.get('audio');
 						var audio = new Audio('https://bemyfr1end.herokuapp.com/test.wav');  
 						audio.type = 'audio/wav';
 						audio.crossOrigin = "anonymous";
 						audio.src = "https://bemyfr1end.herokuapp.com/test.wav";
+                        if (resposta.error) {
+                            $("#chat").append("<div class=\"texto chatbot\">" + resposta.error + "</div>");
+                            return false;
+                        }
+						
 						audio.load();
 						audio.play();
 						var cookie1 = "session_id="+ resposta.session_id;
