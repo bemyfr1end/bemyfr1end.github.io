@@ -340,10 +340,13 @@ canvas { border: 1px solid black; display: block; }
 						document.cookie = cookie2;
 						var xy = document.cookie;
 						var str1 = xy.substring(11);
-						var dude2 = str1.split('; audio=')[1]
+						var dude2 = str1.split('; audio=')[1];
+						var dude3 = str1.split('; audio=')[0];
                         //var str1 = xy.substring(11,(keyw.length));
 						var mensagemChatbot = "<div class=\"texto chatbot\">";
                         mensagemChatbot += dude2;
+						mensagemChatbot += " ";
+						mensagemChatbot += dude3;
 						mensagemChatbot += " ";
 						mensagemChatbot += resposta.message;
                         mensagemChatbot += "</div>";
