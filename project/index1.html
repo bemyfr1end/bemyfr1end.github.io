@@ -268,7 +268,7 @@ canvas { border: 1px solid black; display: block; }
                         $("#mensagem #texto").focus();
 					//window.AudioContext = window.AudioContext || window.webkitAudioContext || window.mozAudioContext;
 						//var x5 = Cookies.get('audio');
-						var audio = new Audio('https://bemyfr1end.herokuapp.com/test1.wav');
+						var audio = new Audio('https://bemyfr1end.herokuapp.com/' +resposta.audio);
 						audio.load();
 						audio.type = 'audio/wav';
 						audio.crossOrigin = "anonymous";
