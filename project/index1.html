@@ -248,7 +248,7 @@ canvas { border: 1px solid black; display: block; }
                 console.log(gambi);
 				var xy1 = document.cookie;
 				var str11 = xy1.substring(11);
-				var dude21 = str11.split('; audio=')[1];
+				var dude21 = str11.split('; audio=')[0];
 				//Inicia método AJAX
                 $.ajax({
                     type: 'POST',
