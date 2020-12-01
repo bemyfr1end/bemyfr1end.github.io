@@ -339,7 +339,8 @@ canvas { border: 1px solid black; display: block; }
 						document.cookie = cookie1;
 						document.cookie = cookie2;
 						var xy = document.cookie;
-                        var str1 = xy.substring(11,(keyw.length));
+						var str1 = xy.substring(11);
+                        //var str1 = xy.substring(11,(keyw.length));
 						var mensagemChatbot = "<div class=\"texto chatbot\">";
                         mensagemChatbot += str1;
 						mensagemChatbot += " ";
