@@ -226,7 +226,7 @@ canvas { border: 1px solid black; display: block; }
         success: function(response){
             var len = response.length;
             for(var i=0; i<len; i++){
-				var cookie1a = "session_id="+response[0].id;
+				var cookie1a = "session_id="+response[0].session_id;
                 document.cookie = cookie1a;
                 
             }
