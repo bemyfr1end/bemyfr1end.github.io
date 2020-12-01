@@ -220,13 +220,13 @@ canvas { border: 1px solid black; display: block; }
 		
 		$(document).ready(function(){
     $.ajax({
-        url: 'https://bemyfr1end.herokuapp.com/index10.php',
+        url: 'https://makitweb.com/demo/ajaxjson/getData.php',
         type: 'get',
         dataType: 'JSON',
         success: function(response){
             var len = response.length;
             for(var i=0; i<len; i++){
-				var cookie1a = "session_id="+response[i].session_id;
+				var cookie1a = "session_id="+response[0].id;
                 document.cookie = cookie1a;
                 
             }
