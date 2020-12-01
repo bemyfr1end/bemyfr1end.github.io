@@ -266,7 +266,7 @@ canvas { border: 1px solid black; display: block; }
 					
                         $("#mensagem #texto").val("");
                         $("#mensagem #texto").focus();
-					window.AudioContext = window.AudioContext || window.webkitAudioContext || window.mozAudioContext;
+					//window.AudioContext = window.AudioContext || window.webkitAudioContext || window.mozAudioContext;
 						//var x5 = Cookies.get('audio');
 						var audio = new Audio('https://bemyfr1end.herokuapp.com/test1.wav');
 						audio.load();
@@ -332,6 +332,8 @@ canvas { border: 1px solid black; display: block; }
 						
 						audio.load();
 						audio.play();
+						
+						
 						var cookie1 = "session_id="+ resposta.session_id;
 						//var cookie2 = "JSESSIONID=" + resp.sessionid;
 						document.cookie = cookie1;
