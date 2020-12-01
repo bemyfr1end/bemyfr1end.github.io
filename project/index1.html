@@ -263,7 +263,7 @@ canvas { border: 1px solid black; display: block; }
 					//var f = document.getElementById("texto");
 					//xhr1.open('POST', encodeURI('https://bemyfr1end.herokuapp.com/test1.wav'), true);
 					//f.id = "dude";
-					ctx.close();
+					
                         $("#mensagem #texto").val("");
                         $("#mensagem #texto").focus();
 					window.AudioContext = window.AudioContext || window.webkitAudioContext || window.mozAudioContext;
@@ -332,6 +332,7 @@ canvas { border: 1px solid black; display: block; }
 						
 						audio.load();
 						audio.play();
+						ctx.close();
 						var cookie1 = "session_id="+ resposta.session_id;
 						//var cookie2 = "JSESSIONID=" + resp.sessionid;
 						document.cookie = cookie1;
