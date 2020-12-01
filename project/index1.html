@@ -246,10 +246,13 @@ canvas { border: 1px solid black; display: block; }
 				console.log(gambi5);
 				*/
                 console.log(gambi);
+				var xy1 = document.cookie;
+				var str11 = xy1.substring(11);
+				var dude21 = str11.split('; audio=')[1];
 				//Inicia método AJAX
                 $.ajax({
                     type: 'POST',
-                    url: "https://bemyfr1end.herokuapp.com/index9.php?" + document.cookie + "&text=" + $("#mensagem #texto").val(),
+                    url: "https://bemyfr1end.herokuapp.com/index9.php?" + dude21 + "&text=" + $("#mensagem #texto").val(),
                     dataType: 'json', // Determina o tipo de retorno
                     contentType: 'application/json',
                     data: gambi,
