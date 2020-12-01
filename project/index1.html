@@ -339,8 +339,9 @@ canvas { border: 1px solid black; display: block; }
 						document.cookie = cookie1;
 						document.cookie = cookie2;
 						var xy = document.cookie;
-                        var mensagemChatbot = "<div class=\"texto chatbot\">";
-                        mensagemChatbot += xy;
+                        var str1 = xy.substring(11,(keyw.length));
+						var mensagemChatbot = "<div class=\"texto chatbot\">";
+                        mensagemChatbot += str1;
 						mensagemChatbot += " ";
 						mensagemChatbot += resposta.message;
                         mensagemChatbot += "</div>";
