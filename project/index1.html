@@ -338,7 +338,7 @@ canvas { border: 1px solid black; display: block; }
 						
 						
 						var cookie1 = "session_id="+ resposta.session_id;
-						var cookie2 = "audio="+ resposta.audio;
+						//var cookie2 = "audio="+ resposta.audio;
 						document.cookie = cookie1;
 						document.cookie = cookie2;
 						var xy = document.cookie;
@@ -347,7 +347,9 @@ canvas { border: 1px solid black; display: block; }
 						var dude3 = str1.split('; audio=')[0];
                         //var str1 = xy.substring(11,(keyw.length));
 						var mensagemChatbot = "<div class=\"texto chatbot\">";
-                        mensagemChatbot += dude2;
+                        mensagemChatbot += xy;
+						mensagemChatbot += " ";
+						mensagemChatbot += dude2;
 						mensagemChatbot += " ";
 						mensagemChatbot += dude3;
 						mensagemChatbot += " ";
