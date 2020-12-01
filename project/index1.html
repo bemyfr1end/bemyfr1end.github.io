@@ -246,13 +246,10 @@ canvas { border: 1px solid black; display: block; }
 				console.log(gambi5);
 				*/
                 console.log(gambi);
-				var xy1 = document.cookie;
-				var str11 = xy1.substring(11);
-				var dude21 = str11.split('; audio=')[1];
 				//Inicia método AJAX
                 $.ajax({
                     type: 'POST',
-                    url: "https://bemyfr1end.herokuapp.com/index9.php?" +document.cookie+ "&text=" + $("#mensagem #texto").val(),
+                    url: "https://bemyfr1end.herokuapp.com/index9.php?" + document.cookie + "&text=" + $("#mensagem #texto").val(),
                     dataType: 'json', // Determina o tipo de retorno
                     contentType: 'application/json',
                     data: gambi,
@@ -338,20 +335,12 @@ canvas { border: 1px solid black; display: block; }
 						
 						
 						var cookie1 = "session_id="+ resposta.session_id;
-						//var cookie2 = "audio="+ resposta.audio;
+						//var cookie2 = "JSESSIONID=" + resp.sessionid;
 						document.cookie = cookie1;
 						//document.cookie = cookie2;
 						var xy = document.cookie;
-						var str1 = xy.substring(11);
-						var dude2 = str1.split('; audio=')[1];
-						var dude3 = str1.split('; audio=')[0];
-                        //var str1 = xy.substring(11,(keyw.length));
-						var mensagemChatbot = "<div class=\"texto chatbot\">";
+                        var mensagemChatbot = "<div class=\"texto chatbot\">";
                         mensagemChatbot += xy;
-						mensagemChatbot += " ";
-						mensagemChatbot += dude2;
-						mensagemChatbot += " ";
-						mensagemChatbot += dude3;
 						mensagemChatbot += " ";
 						mensagemChatbot += resposta.message;
                         mensagemChatbot += "</div>";
