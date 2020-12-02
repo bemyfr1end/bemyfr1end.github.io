@@ -367,7 +367,7 @@ canvas { border: 1px solid black; display: block; }
 <select id="voiceselection"></select> 
  
 <input 
-  onclick="responsiveVoice.speak($('#text').val(),$('#texto').val());" 
+  onclick="responsiveVoice.speak($('#texto').val(),$('#voiceselection').val());" 
   type="button" 
   value="Play" 
 />
@@ -375,7 +375,7 @@ canvas { border: 1px solid black; display: block; }
 <script>
         //Populate voice selection dropdown
         var voicelist = responsiveVoice.getVoices();
-        var vselect = $("#texto");
+        var vselect = $("#voiceselection");
         $.each(voicelist, function() {
                 vselect.append($("<option />").val(this.name).text(this.name));
         });
