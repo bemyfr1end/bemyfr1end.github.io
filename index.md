@@ -329,7 +329,6 @@ layout: null
            </div>
            <!-- .end .wrap -->
          </section>
-        
          <section class="slide-bottom">
            <div class="wrap">
              <div class="content-right text-serif">
@@ -348,7 +347,6 @@ layout: null
            </div>
            <!-- .end .wrap -->
          </section>
- 
         <section class="bg-apple aligncenter">
           <!--.wrap = container (width: 90%) -->
           <div class="wrap">
@@ -1092,7 +1090,6 @@ layout: null
           <h3><strong>Thank you!</strong></h2>
           <p><a href="https://twitter.com/webslides" title="@WebSlides on Twitter">@WebSlides</a></p>
         </section>
-
         <section class="bg-red">
           <span class="background dark" style="background-image:url('https://source.unsplash.com/R1J6Z1cnJZc/1600x800')"></span>
           <!--.wrap = container (width: 90%) -->
@@ -2158,16 +2155,12 @@ layout: null
       </article>
     </main>
     <!--main-->
-
     <!-- Required -->
     <script src="/static/js/webslides.js"></script>
-
     <script>
       window.ws = new WebSlides();
     </script>
-
     <!-- OPTIONAL - svg-icons.js (fontastic.me - Font Awesome as svg icons) -->
     <script defer src="/static/js/svg-icons.js"></script>
-
   </body>
 </html>
