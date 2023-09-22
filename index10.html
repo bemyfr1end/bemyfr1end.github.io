@@ -1,0 +1,105 @@
+
+<!DOCTYPE html>
+<html lang="en" >
+
+<head>
+  <meta charset="UTF-8">
+  
+
+    <link rel="apple-touch-icon" type="image/png" href="https://cpwebassets.codepen.io/assets/favicon/apple-touch-icon-5ae1a0698dcc2402e9712f7d01ed509a57814f994c660df9f7a952f3060705ee.png" />
+
+    <meta name="apple-mobile-web-app-title" content="CodePen">
+
+    <link rel="shortcut icon" type="image/x-icon" href="https://cpwebassets.codepen.io/assets/favicon/favicon-aec34940fbc1a6e787974dcd360f2c6b63348d4b1f4e06c77743096d55480f33.ico" />
+
+    <link rel="mask-icon" type="image/x-icon" href="https://cpwebassets.codepen.io/assets/favicon/logo-pin-b4b4269c16397ad2f0f7a01bcdf513a1994f4c94b8af2f191c09eb0d601762b1.svg" color="#111" />
+
+
+
+  
+    <script src="https://cpwebassets.codepen.io/assets/common/stopExecutionOnTimeout-2c7831bb44f98c1391d6a4ffda0e1fd302503391ca806e7fcc7b9b87197aec26.js"></script>
+
+
+  <title>CodePen - Tensorflow.js - Simple Posenet Json Result</title>
+
+    <link rel="canonical" href="https://codepen.io/karolmajek/pen/YOQywb">
+  
+  
+  
+  
+<style>
+#img{
+  width: 400px;
+}
+.container {
+   height: auto;
+   overflow: hidden;
+}
+
+.right {
+    width: 70%;
+    float: right;
+}
+
+.left {
+    float: none; /* not needed, just for clarification */
+    width: 28%;
+    overflow: hidden;
+}
+</style>
+
+  <script>
+  window.console = window.console || function(t) {};
+</script>
+
+  
+  
+</head>
+
+<body translate="no">
+  <html>
+  <head>
+    <!-- Load TensorFlow.js -->
+    <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs@0.11.7"></script>
+    <!-- Load Posenet -->
+    <script src="https://cdn.jsdelivr.net/npm/@tensorflow-models/posenet@0.1.2"></script>
+  </head>
+  <body>
+    <div class="container">
+      <div class='right'>
+        <pre id="p1">
+        Please wait for the results...
+        </pre> 
+      </div>
+      <div class="left">
+        <img id="img" src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/68/Akha_cropped_hires.JPG/220px-Akha_cropped_hires.JPG" crossorigin="anonymous"/>
+      </div>
+    </div>
+  </body>
+</html>
+  
+      <script id="rendered-js" >
+const imageScaleFactor = 0.5;
+const outputStride = 16;
+const flipHorizontal = false;
+
+const imageElement = document.getElementById('img');
+
+posenet.load().then(function (net) {
+  return net.estimateMultiplePoses(imageElement, imageScaleFactor, flipHorizontal, outputStride);
+}).then(function (pose) {
+  console.log(pose);
+  if (pose.length == 0)
+  {
+    document.getElementById("p1").innerHTML = "Array is empty, try another browser.\n\n\n";
+  }
+  document.getElementById("p1").innerHTML += JSON.stringify(pose, undefined, 2);
+
+});
+//# sourceURL=pen.js
+    </script>
+
+  
+</body>
+
+</html>
