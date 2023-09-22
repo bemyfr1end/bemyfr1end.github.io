@@ -1,0 +1,256 @@
+
+<!DOCTYPE html>
+<html lang="en" >
+
+<head>
+  <meta charset="UTF-8">
+  
+
+
+
+    <script src="/js/dance1.js"></script>
+  <title>CodePen - Posenet Javascript Demo</title>
+
+  
+ 
+  
+<style>
+body {
+  height: 100vh;
+  width: 100vw;
+  position: relative;
+  background-color: #424242;
+}
+
+canvas {
+  border-radius: 4px;
+  border: 16px solid #e2e2e2;
+  margin: auto;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  box-shadow: 0px 0px 0px 15px #2b2b2b;
+}
+</style>
+
+
+  
+  
+</head>
+
+<body translate="no">
+ 
+<br>
+<br>
+  <p id='status'>Loading model...</p>
+  <script src='https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.7.3/p5.min.js'></script>
+<script src='https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.7.3/addons/p5.dom.min.js'></script>
+<script src='https://unpkg.com/ml5@0.2.2/dist/ml5.min.js'></script>
+      <script id="rendered-js" >
+let video;
+let poseNet;
+let poses = [];
+let fingers;
+
+function setup() {
+  
+
+  createCanvas(640, 480);
+  fingers = createVideo(['videos/1.mp4']);
+  fingers.hide();
+  video = createCapture(VIDEO);
+  video.size(width, height);
+
+  // Create a new poseNet method with a single detection
+  poseNet = ml5.poseNet(video, modelReady);
+  // This sets up an event that fills the global variable "poses"
+  // with an array every time new poses are detected
+  poseNet.on('pose', function (results) {
+    poses = results;
+    console.log(poses);
+  });
+  // Hide the video element, and just show the canvas
+  video.hide();
+ // alert("youdick head");
+
+}
+
+function modelReady() {
+  select('#status').html('Model Loaded');
+}
+
+function draw() {
+ // video();
+  fingers();
+  image(video, 0, 0, width, height);
+
+  image(video, 20, 0, width, height);
+
+  background(150);
+  image(fingers, 10, 10); // draw the video frame to canvas
+  filter(GRAY);
+  image(fingers, 150, 150); // draw a second copy to canvas
+
+
+  // We can call both functions to draw all keypoints and the skeletons
+  drawKeypoints();
+  drawSkeleton();
+}
+
+function mousePressed() {
+  fingers.loop(); // set the video to loop and start playing
+}
+
+// A function to draw ellipses over the detected keypoints
+function drawKeypoints() {
+  // Loop through all the poses detected
+  for (let i = 0; i < poses.length; i++) {if (window.CP.shouldStopExecution(0)) break;
+    // For each pose detected, loop through all the keypoints
+    let pose = poses[i].pose;
+    for (let j = 0; j < pose.keypoints.length; j++) {if (window.CP.shouldStopExecution(1)) break;
+      // A keypoint is an object describing a body part (like rightArm or leftShoulder)
+      let keypoint = pose.keypoints[j];
+      // Only draw an ellipse is the pose probability is bigger than 0.2
+      if (keypoint.score > 0.2) {
+        fill(255, 242, 0);
+        noStroke();
+        ellipse(keypoint.position.x, keypoint.position.y, 10, 10);
+      }
+    }window.CP.exitedLoop(1);
+  }window.CP.exitedLoop(0);
+}
+
+// A function to draw the skeletons
+function drawSkeleton() {
+  // Loop through all the skeletons detected
+  for (let i = 0; i < poses.length; i++) {if (window.CP.shouldStopExecution(2)) break;
+    let skeleton = poses[i].skeleton;
+    // For every skeleton, loop through all body connections
+    for (let j = 0; j < skeleton.length; j++) {if (window.CP.shouldStopExecution(3)) break;
+      let partA = skeleton[j][0];
+      let partB = skeleton[j][1];
+      stroke(255, 242, 0);
+      line(partA.position.x, partA.position.y, partB.position.x, partB.position.y);
+    }window.CP.exitedLoop(3);
+  }window.CP.exitedLoop(2);
+}
+//# sourceURL=dance.js
+    </script>
+<br>
+<canvas id="myCanvas" width = "532" height ="300" ></canvas><br>
+<h3><div id = "playPause">Loading content.</div></h3>
+<script type="text/javascript">
+  // This code is from the example document on stackoverflow documentation. See HTML for link to the example.
+// This code is almost identical to the example. Mute has been added and a media source. Also added some error handling in case the media load fails and a link to fix IE9+ and Edge support.
+// Code by Blindman67.
+
+
+// Original source has returns 404
+// var mediaSource = "http://video.webmfiles.org/big-buck-bunny_trailer.webm";
+// New source from wiki commons. Attribution in the leading credits.
+var mediaSource = "/videos/1.mp4";
+
+var muted = true;
+var canvas1 = document.getElementById("myCanvas"); // get the canvas from the page
+var ctx = canvas1.getContext("2d");
+var videoContainer; // object to hold video and associated info
+var video1 = document.createElement("video"); // create a video element
+video1.src = mediaSource;
+// the video will now begin to load.
+// As some additional info is needed we will place the video in a
+// containing object for convenience
+video1.autoPlay = false; // ensure that the video does not auto play
+video1.loop = true; // set the video to loop.
+video1.muted = muted;
+videoContainer = {  // we will add properties as needed
+video : video1,
+ready : false,   
+};
+// To handle errors. This is not part of the example at the moment. Just fixing for Edge that did not like the ogv format video
+video1.onerror = function(e){
+document.body.removeChild(canvas1);
+document.body.innerHTML += "<h2>There is a problem loading the video</h2><br>";
+document.body.innerHTML += "Users of IE9+ , the browser does not support WebM videos used by this demo";
+document.body.innerHTML += "<br><a href='https://tools.google.com/dlpage/webmmf/'> Download IE9+ WebM support</a> from tools.google.com<br> this includes Edge and Windows 10";
+
+}
+video1.oncanplay = readyToPlayVideo; // set the event to the play function that 
+                            // can be found below
+function readyToPlayVideo(event){ // this is a referance to the video
+// the video may not match the canvas size so find a scale to fit
+videoContainer.scale = Math.min(
+                   canvas1.width / this.videoWidth, 
+                   canvas1.height / this.videoHeight); 
+videoContainer.ready = true;
+// the video can be played so hand it off to the display function
+requestAnimationFrame(updateCanvas);
+// add instruction
+document.getElementById("playPause").textContent = "Click video to play/pause.";
+//document.querySelector(".mute").textContent = "Mute";
+}
+
+function updateCanvas(){
+ctx.clearRect(0,0,canvas.width,canvas.height); 
+// only draw if loaded and ready
+if(videoContainer !== undefined && videoContainer.ready){ 
+  // find the top left of the video on the canvas
+  video.muted = muted;
+  var scale = videoContainer.scale;
+  var vidH = videoContainer.video.videoHeight;
+  var vidW = videoContainer.video.videoWidth;
+  var top = canvas.height / 2 - (vidH /2 ) * scale;
+  var left = canvas.width / 2 - (vidW /2 ) * scale;
+  // now just draw the video the correct size
+  ctx.drawImage(videoContainer.video, left, top, vidW * scale, vidH * scale);
+  if(videoContainer.video.paused){ // if not playing show the paused screen 
+      drawPayIcon();
+  }
+}
+// all done for display 
+// request the next frame in 1/60th of a second
+requestAnimationFrame(updateCanvas);
+}
+
+function drawPayIcon(){
+ctx.fillStyle = "black";  // darken display
+ctx.globalAlpha = 0.5;
+ctx.fillRect(0,0,canvas.width,canvas.height);
+ctx.fillStyle = "#DDD"; // colour of play icon
+ctx.globalAlpha = 0.75; // partly transparent
+ctx.beginPath(); // create the path for the icon
+var size = (canvas.height / 2) * 0.5;  // the size of the icon
+ctx.moveTo(canvas.width/2 + size/2, canvas.height / 2); // start at the pointy end
+ctx.lineTo(canvas.width/2 - size/2, canvas.height / 2 + size);
+ctx.lineTo(canvas.width/2 - size/2, canvas.height / 2 - size);
+ctx.closePath();
+ctx.fill();
+ctx.globalAlpha = 1; // restore alpha
+}    
+
+function playPauseClick(){
+if(videoContainer !== undefined && videoContainer.ready){
+    if(videoContainer.video.paused){                                 
+          videoContainer.video.play();
+    }else{
+          videoContainer.video.pause();
+    }
+}
+}
+function videoMute(){
+muted = !muted;
+if(muted){
+   document.querySelector(".mute").textContent = "Mute";
+}else{
+   document.querySelector(".mute").textContent= "Sound on";
+}
+
+
+}
+// register the event
+canvas1.addEventListener("click",playPauseClick);
+</script>
+  
+</body>
+
+</html>

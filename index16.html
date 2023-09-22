@@ -1,0 +1,36 @@
+<html>
+<head>
+<meta charset="UTF-8">
+<!-- Load TensorFlow.js -->
+<script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs"></script>
+<!-- Load Posenet -->
+<script src="https://cdn.jsdelivr.net/npm/@tensorflow-models/posenet"></script> 
+</head>
+<body>
+<img id='cat' crossorigin="anonymous" />
+<button onclick = "myfun()">button</button>
+<script>
+function myfun(){
+arr = ["/images/5.png","/images/4.png","/images/3.png","/images/2.png","/images/1.png"]
+var x;
+for(x of arr){
+document.getElementById("cat").src = x;
+
+var flipHorizontal = false;
+var imageElement = document.getElementById('cat');
+imageElement.crossOrigin = "Anonymous";
+posenet.load({architecture: 'MobileNetV1',
+outputStride: 16}).then(function (net) {
+const pose = net.estimateSinglePose(imageElement, {
+flipHorizontal: true
+});
+return pose;
+}).then(function (pose) {
+console.log(pose);
+})
+}
+
+}
+</script>
+</body>
+</html>
