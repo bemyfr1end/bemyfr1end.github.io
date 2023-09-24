@@ -609,12 +609,6 @@ const tracker = {
                 break;
         }
     },
-
-    /*
-        Initialize ScatterGL
-     */
-   
-
     /*
         Initialize core elements
      */
@@ -624,7 +618,6 @@ const tracker = {
         // init elements
         tracker.video = document.querySelector(tracker.elVideo);
         tracker.canvas = document.querySelector(tracker.elCanvas),
-            tracker.scatterGLEl = document.querySelector(tracker.el3D);
         tracker.ctx = tracker.canvas.getContext("2d");
 
     },
@@ -639,7 +632,7 @@ const tracker = {
 
         // initial settings
         tracker.video.autoPlay = false;
-        tracker.video.loop = true;
+        tracker.video.loop = false;
         tracker.container = {
             video: tracker.video,
             ready: false,
@@ -751,7 +744,7 @@ const tracker = {
 
         // setup video
         tracker.video.autoPlay = true;
-        tracker.video.loop = true;
+        tracker.video.loop = false;
         tracker.container = {
             video: tracker.video,
             ready: true,
