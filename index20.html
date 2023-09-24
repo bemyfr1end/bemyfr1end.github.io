@@ -98,8 +98,6 @@
 	  <div id="info_counter"></div>
 	</div>
 	<div id="view_3d"></div>
-	<div class="footer"><b>JS AI BODY TRACKER</b> v.1.0.0 | © 2022 Marcin "szczyglis" Szczyglinski | <a href="https://github.com/szczyglis-dev/js-ai-body-tracker" target="_blank">GitHUB</a></div>
-
 	<!-- Load Tensor Flow -->
 	<script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs-core"></script>
 	<script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs-converter"></script>
@@ -112,13 +110,13 @@
 	<script src="https://cdn.jsdelivr.net/npm/scatter-gl@0.0.13/lib/scatter-gl.min.js"></script>
 
 	<!-- Load tracker.js and app.js-->
-	<script src="/js/app1.js"></script>
+	<script src="/js/app2.js"></script>
 	<script src="/js/tracker1.js"></script>
 	<script>
 
 		let source = 'camera'; // camera|video|stream		
 		let sourceVideo = '';
-		let defaultVideo = 'videos/1.mp4';
+		let defaultVideo = '/videos/1.mp4';
 		let defaultStream = 'https://multiplatform-f.akamaihd.net/i/multi/will/bunny/big_buck_bunny_,640x360_400,640x360_700,640x360_1000,950x540_1500,.f4v.csmil/master.m3u8';
 		let model = 'MoveNetSinglePoseLightning';
 		/*

@@ -11,15 +11,18 @@ const app = {
     init: function() {
         // get selected model name from URL query string
         const params = new URLSearchParams(window.location.search);
-        if (params.has('model')) {
+      /*  if (params.has('model')) {
             model = params.get('model');
         }
-
-        // get selected source from URL query string
-        if (params.has('source')) {
+         if (params.has('source')) {
             source = params.get('source');
         }
 
+*/
+model = "MoveNetSinglePoseLightning";
+source = "video";
+        // get selected source from URL query string
+       
         // get defined video/stream URL from URL query string
         if (params.has('url')) {
             sourceVideo = params.get('url');
@@ -122,17 +125,7 @@ const app = {
         });
     },
 
-    // handle toggle button
-    toggleAI: function() {
-        if (tracker.enableAI) {
-            tracker.enableAI = false;
-            console.log('AI ON');
-        } else {
-            tracker.enableAI = true;
-            console.log('AI OFF');
-        }
-    },
-
+ 
     // handle toggle button
     toggleVideo: function() {
         if (tracker.enableVideo) {
@@ -145,34 +138,13 @@ const app = {
     },
 
     // handle toggle button
-    toggle3D: function() {
-        if (tracker.detectorModel != poseDetection.SupportedModels.BlazePose) {
-            alert('3D is available for BlazePose model only!');
-            return;
-        }
-
-        if (tracker.scatterGL == null) {
-            console.error('ScatterGL is not initialized');
-            return;
-        }
-
-        if (tracker.enable3D) {
-            tracker.enable3D = false;
-            tracker.scatterGLEl.style.display = "none";
-            console.log('3D OFF');
-        } else {
-            console.log('3D ON');
-            tracker.enable3D = true;
-            tracker.scatterGLEl.style.display = "block";
-            tracker.scatterGL.resize();
-        }
-    },
+   
 
     // handle toggle button
     toggleDebug: function() {
         if (app.debug) {
             app.debug = false;
-            document.getElementById('info_debug').innerHTML = '';
+      //      document.getElementById('info_debug').innerHTML = '';
             console.log('Debug OFF');
         } else {
             app.debug = true;
@@ -201,7 +173,7 @@ const app = {
         if (poses) {
             i = poses.length;
         }
-        document.getElementById('info_counter').innerHTML = i;
+  //      document.getElementById('info_counter').innerHTML = i;
     },
 
     // draw debug coords
@@ -231,6 +203,6 @@ const app = {
             }
             n++;
         }
-        document.getElementById('info_debug').innerHTML = str;
+      //  document.getElementById('info_debug').innerHTML = str;
     },
 }
