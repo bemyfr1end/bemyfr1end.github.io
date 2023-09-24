@@ -1220,10 +1220,7 @@ const tracker = {
                     }
                 }
 
-                // draw 3D points if available using ScatterGL
-                if (tracker.enable3D && pose.keypoints3D != null && pose.keypoints3D.length > 0) {
-                    tracker.drawKeypoints3D(pose.keypoints3D);
-                }
+               
             }
         }
 
@@ -1274,49 +1271,7 @@ const tracker = {
         tracker.ctx.closePath();
     },
 
-    /*
-        Draw 3D keypoints using ScatterGL
-     */
-    drawKeypoints3D: function(keypoints) {
-        const scoreThreshold = tracker.minScore || 0;
-        const pointsData = keypoints.map(keypoint => [keypoint.x, -keypoint.y, -keypoint.z]);
-        const dataset = new ScatterGL.Dataset([...pointsData, ...tracker.anchors3D]);
-        const keypointInd = poseDetection.util.getKeypointIndexBySide(tracker.detectorModel);
-
-        // defined colors for sizes
-        tracker.scatterGL.setPointColorer(i => {
-            if (keypoints[i] == null || keypoints[i].score < scoreThreshold) {
-                return '#ffffff'; // white if low score
-            }
-            if (i === 0) {
-                return '#ff0000'; // red
-            }
-            if (keypointInd.left.indexOf(i) > -1) {
-                return '#00ff00'; // green
-            }
-            if (keypointInd.right.indexOf(i) > -1) {
-                return '#ffa500'; // orange
-            }
-        });
-
-        // check if already rendered
-        if (!tracker.scatterGLInitialized) {
-            tracker.scatterGL.render(dataset);
-        } else {
-            tracker.scatterGL.updateDataset(dataset);
-        }
-
-        const connections = poseDetection.util.getAdjacentPairs(tracker.detectorModel);
-        const sequences = connections.map(pair => ({
-            indices: pair
-        }));
-        tracker.scatterGL.setSequences(sequences);
-        tracker.scatterGLInitialized = true;
-    },
-
-    /*
-        Clear canvas area
-     */
+   
     clearCanvas: function() {
         tracker.ctx.save();
         tracker.ctx.setTransform(1, 0, 0, 1, 0, 0);
@@ -1423,36 +1378,7 @@ const tracker = {
      */
     setModel: function(model) {
         switch (model) {
-            case 'BlazePoseLite':
-                tracker.detectorModel = poseDetection.SupportedModels.BlazePose;
-                tracker.detectorConfig = {
-                    runtime: 'tfjs',
-                    enableSmoothing: true,
-                    modelType: 'lite'
-                };
-                tracker.minScore = 0.65;
-                break;
-
-            case 'BlazePoseHeavy':
-                tracker.detectorModel = poseDetection.SupportedModels.BlazePose;
-                tracker.detectorConfig = {
-                    runtime: 'tfjs',
-                    enableSmoothing: true,
-                    modelType: 'heavy'
-                };
-                tracker.minScore = 0.65;
-                break;
-
-            case 'BlazePoseFull':
-                tracker.detectorModel = poseDetection.SupportedModels.BlazePose;
-                tracker.detectorConfig = {
-                    runtime: 'tfjs',
-                    enableSmoothing: true,
-                    modelType: 'full'
-                };
-                tracker.minScore = 0.65;
-                break;
-
+        
             case 'MoveNetSinglePoseLightning':
                 tracker.detectorModel = poseDetection.SupportedModels.MoveNet;
                 tracker.detectorConfig = {
@@ -1465,58 +1391,6 @@ const tracker = {
                 tracker.minScore = 0.35;
                 break;
 
-            case 'MoveNetMultiPoseLightning':
-                tracker.detectorModel = poseDetection.SupportedModels.MoveNet;
-                tracker.detectorConfig = {
-                    modelType: poseDetection.movenet.modelType.MULTIPOSE_LIGHTNING,
-                    enableSmoothing: true,
-                    multiPoseMaxDimension: 256,
-                    enableTracking: true,
-                    trackerType: poseDetection.TrackerType.BoundingBox
-                }
-                tracker.minScore = 0.35;
-                break;
-
-            case 'MoveNetSinglePoseThunder':
-                tracker.detectorModel = poseDetection.SupportedModels.MoveNet;
-                tracker.detectorConfig = {
-                    modelType: poseDetection.movenet.modelType.SINGLEPOSE_THUNDER,
-                    enableSmoothing: true,
-                    multiPoseMaxDimension: 256,
-                    enableTracking: true,
-                    trackerType: poseDetection.TrackerType.BoundingBox
-                }
-                tracker.minScore = 0.35;
-                break;
-
-            case 'PoseNetMobileNetV1':
-                tracker.detectorModel = poseDetection.SupportedModels.PoseNet;
-                tracker.detectorConfig = {
-                    architecture: 'MobileNetV1',
-                    outputStride: 16,
-                    inputResolution: {
-                        width: 640,
-                        height: 480
-                    },
-                    multiplier: 0.75
-                }
-                tracker.minScore = 0.5;
-                break;
-
-            case 'PoseNetResNet50':
-                tracker.detectorModel = poseDetection.SupportedModels.PoseNet;
-                tracker.detectorConfig = {
-                    architecture: 'ResNet50',
-                    outputStride: 16,
-                    multiplier: 1.0,
-                    inputResolution: {
-                        width: 257,
-                        height: 200
-                    },
-                    quantBytes: 2
-                }
-                tracker.minScore = 0.5;
-                break;
-        }
+             }
     },
 }
