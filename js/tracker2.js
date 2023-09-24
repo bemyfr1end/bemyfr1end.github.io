@@ -623,25 +623,7 @@ const tracker = {
     /*
         Initialize ScatterGL
      */
-    init3D: function() {
-        if (tracker.scatterGLEl == null) {
-            return;
-        }
-        // init and store instance
-        tracker.scatterGL = new ScatterGL(tracker.scatterGLEl, {
-            'rotateOnStart': true,
-            'selectEnabled': false,
-            'styles': {
-                polyline: {
-                    defaultOpacity: 1,
-                    deselectedOpacity: 1
-                },
-                fog: {
-                    enabled: false
-                }
-            }
-        });
-    },
+   
 
     /*
         Initialize core elements
