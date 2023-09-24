@@ -48,16 +48,6 @@ const tracker = {
     ctx: null, // canvas context instance
     container: null, // container for video
     status: '', // current status message
-    anchors3D: [ // 3D keypoints anchors
-        [0, 0, 0],
-        [0, 1, 0],
-        [-1, 0, 0],
-        [-1, -1, 0]
-    ],
-    scatterGL: null, // ScatterGL instance
-    scatterGLEl: null, // DOMElement with ScatterGL container
-    scatterGLInitialized: false, // bool, ScatterGL initialization state
-    videoJS: null, // videoJS instance 
     paths: {
         // paths between points configuration
         'movenet_posenet': {
@@ -637,10 +627,6 @@ const tracker = {
             tracker.scatterGLEl = document.querySelector(tracker.el3D);
         tracker.ctx = tracker.canvas.getContext("2d");
 
-        // instantiate ScatterGL for 3D points view (BlazePose model only)
-        if (tracker.detectorModel == poseDetection.SupportedModels.BlazePose) {
-            tracker.init3D();
-        }
     },
 
     /*
@@ -1207,7 +1193,8 @@ const tracker = {
                         }
                         point = tracker.getCoords(pathlist[k], pose); // get X,Y coords of path
                         score = tracker.getScore(pathlist[k], pose); // calculate score for path
-
+//console.log(point);
+//console.log(score);
                         // draw path on canvas
                         tracker.drawPath(point.from_x,
                             point.from_y,
@@ -1220,7 +1207,15 @@ const tracker = {
                     }
                 }
 
-               
+            
+if (tracker.container.video.paused){
+
+}else{
+  //  console.log(point);
+    console.log(pose);
+
+   // console.log(score);
+};
             }
         }
 
@@ -1325,6 +1320,7 @@ const tracker = {
      */
     play: function() {
         tracker.container.video.play();
+        
     },
 
     /*
@@ -1340,6 +1336,7 @@ const tracker = {
     log: function(...args) {
         if (tracker.log) {
             console.log(...args);
+            
         }
     },
 
