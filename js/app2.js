@@ -29,8 +29,6 @@ source = "video";
         }
 
         // update active
-        document.getElementById('model_select').value = model;
-        document.getElementById('source-' + source).classList.add('active');
 
         // append event listeners to source select buttons
         const sources = document.querySelectorAll('.source-select');
@@ -44,12 +42,7 @@ source = "video";
             });
         });
 
-        // append event listener to model select
-        document.getElementById('model_select').addEventListener('change', function(e) {
-            const href = '?model=' + this.value + '&source=' + source + '&url=' + sourceVideo;
-            window.location.href = href;
-        });
-
+        
         // append event listener to load video URL button
         document.getElementById('btn_load_src').addEventListener('change', function(e) {
             sourceVideo = document.getElementById('video_src').value;
