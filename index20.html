@@ -1,5 +1,25 @@
 <html>
 <head>
+    <style>
+        /* Create two equal columns that floats next to each other */
+.column {
+  float: left;
+  width: 50%;
+  padding: 10px;
+  height: 300px; /* Should be removed. Only for demonstration */
+}
+* {
+  box-sizing: border-box;
+  overflow-x: hidden;
+}
+
+/* Clear floats after the columns */
+.row:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+    </style>
 	<meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -61,15 +81,24 @@
 
 	<div class="mt-2 text-center" id="status"></div>
 
-	<div id="wrapper" class="container-fluid">		
-	  <canvas id="canvas"></canvas>&nbsp;&nbsp;&nbsp;<br><canvas class="clip-polygon" id="vidcanvas"></canvas>
-	  <video id="video" class="video-js vjs-fluid vjs-default-skin" preload="metadata">
-	  	<source src="">
-	  </video>
-	  <div id="info_debug"></div>
-	  <div id="info_counter"></div>
-	</div>
-	<div id="view_3d"></div>
+
+
+
+    <div class="row">
+        <div class="column" style="background-color:#000000; text-align: center; min-height: 800px;">
+        			
+                <canvas id="canvas"></canvas>
+                <video id="video" class="video-js vjs-fluid vjs-default-skin" preload="metadata">
+                    <source src="">
+                </video>
+            
+        </div>
+        <div class="column" style="background-color:#000000; text-align: center; min-height: 800px;">
+            <canvas class="clip-polygon" id="vidcanvas"></canvas>
+        </div>
+      </div>
+      
+
 	<!-- Load Tensor Flow -->
 	<script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs-core"></script>
 	<script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs-converter"></script>

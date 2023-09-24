@@ -11,20 +11,19 @@ body {
   #canvas {
     /* width: 50%; */
     /* height: auto; */
-    max-height: 800px;
-    max-width: 30%;
-  }
+    max-height: 750px;
+    /* max-width: 30%; */
+}
   .clip-polygon {
-    clip-path: polygon(0% 0%, 100% 0%, 100% 75%, 75% 75%, 75% 100%, 50% 75%, 0% 75%);
+    clip-path: polygon(10% 0%, 64% 0%, 64% 100%, 10% 100%);
     /* Note that percentages work as well as px */
   }
   #vidcanvas {
     /* width: 50%; */
-    /* height: auto; */
-    max-height: 800%;
-    width: 30%;
+    height: 752px;
+    width: 100%;
     background-color: #ff0202;
-  }
+}
   #video {
     display: none;
   }
