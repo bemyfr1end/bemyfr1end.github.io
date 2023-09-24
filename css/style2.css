@@ -14,6 +14,13 @@ body {
     max-height: 800px;
     max-width: 30%;
   }
+  #vidcanvas {
+    /* width: 50%; */
+    /* height: auto; */
+    height: 100%;
+    max-width: 30%;
+    background-color: #ff0202;
+  }
   #video {
     display: none;
   }
