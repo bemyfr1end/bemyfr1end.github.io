@@ -9,8 +9,10 @@ body {
       color: #03a9f4;
   }
   #canvas {
-    width: 50%;
-    height: auto;
+    /* width: 50%; */
+    /* height: auto; */
+    max-height: 800px;
+    max-width: 30%;
   }
   #video {
     display: none;
