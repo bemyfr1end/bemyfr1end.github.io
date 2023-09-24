@@ -197,27 +197,7 @@
         var mediaSource = "/videos/9.mp4";
         
        
-        function updateCanvas(){
-        ctx.clearRect(0,0,canvas.width,canvas.height); 
-        // only draw if loaded and ready
-        if(videoContainer !== undefined && videoContainer.ready){ 
-        // find the top left of the video on the canvas
-        // video.muted = muted;
-        var scale = videoContainer.scale;
-        var vidH = videoContainer.video.videoHeight;
-        var vidW = videoContainer.video.videoWidth;
-        var top = canvas.height / 2 - (vidH /2 ) * scale;
-        var left = canvas.width / 2 - (vidW /2 ) * scale;
-        // now just draw the video the correct size
-        ctx.drawImage(videoContainer.video, left, top, vidW * scale, vidH * scale);
-        if(videoContainer.video.paused){ // if not playing show the paused screen 
-        drawPayIcon();
-        }
-        }
-        // all done for display 
-        // request the next frame in 1/60th of a second
-        requestAnimationFrame(updateCanvas);
-        }
+      
         
         function drawPayIcon(){
         ctx.fillStyle = "black";  // darken display
