@@ -93,19 +93,7 @@ source = "video";
 
         // ------------------------
         // btn: AI TRACKING ON/OFF
-        document.getElementById('btn_toggle_ai').addEventListener('click', function() {
-            app.toggleAI();
-        });
-
-        // btn: DEBUG ON/OFF
-        document.getElementById('btn_toggle_debug').addEventListener('click', function() {
-            app.toggleDebug();
-        });
-
-        // btn: 3D VIEW ON/OFF
-        document.getElementById('btn_toggle_3d').addEventListener('click', function() {
-            app.toggle3D();
-        });
+      
 
         // btn: VIDEO ON/OFF
         document.getElementById('btn_toggle_video').addEventListener('click', function() {
