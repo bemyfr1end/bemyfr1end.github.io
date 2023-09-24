@@ -14,11 +14,15 @@ body {
     max-height: 800px;
     max-width: 30%;
   }
+  .clip-polygon {
+    clip-path: polygon(0% 0%, 100% 0%, 100% 75%, 75% 75%, 75% 100%, 50% 75%, 0% 75%);
+    /* Note that percentages work as well as px */
+  }
   #vidcanvas {
     /* width: 50%; */
     /* height: auto; */
-    height: 100%;
-    max-width: 30%;
+    max-height: 800%;
+    width: 30%;
     background-color: #ff0202;
   }
   #video {
