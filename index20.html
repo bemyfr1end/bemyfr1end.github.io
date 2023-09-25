@@ -262,10 +262,12 @@
         if (webcamRunning === true) {
             webcamRunning = false;
          //   enableWebcamButton.innerText = "ENABLE PREDICTIONS";
+         document.getElementById( 'webcamButton' ).style.display = 'none';
         }
         else {
             webcamRunning = true;
           //  enableWebcamButton.innerText = "DISABLE PREDICTIONS";
+          document.getElementById( 'webcamButton' ).style.display = 'none';
         }
 
         const constraints = {
@@ -299,13 +301,16 @@
                         radius: (data) => DrawingUtils.lerp(data.from.z, -0.15, 0.1, 5, 1)
                     });
                     drawingUtils.drawConnectors(landmark, PoseLandmarker.POSE_CONNECTIONS);
+                   
                 }
                 canvasCtx.restore();
+                console.log(result.landmarks, PoseLandmarker.POSE_CONNECTIONS);
             });
         }
         
         if (webcamRunning === true) {
             window.requestAnimationFrame(predictWebcam);
+            
         }
     }
  
