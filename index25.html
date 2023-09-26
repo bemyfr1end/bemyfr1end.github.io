@@ -6,6 +6,24 @@
 .canvasjs-chart-credit{
 display: none !important;
 }
+* {
+box-sizing: border-box;
+}
+
+/* Create two equal columns that floats next to each other */
+.column {
+float: left;
+width: 50%;
+padding: 10px;
+height: 300px; /* Should be removed. Only for demonstration */
+}
+
+/* Clear floats after the columns */
+.row:after {
+content: "";
+display: table;
+clear: both;
+}
 </style>
 <script type="text/javascript">
 window.onload = function () {
@@ -196,7 +214,7 @@ data: [
 type: "line",
 dataPoints: [
 {            
- y: -0.5195906758308411,
+y: -0.5195906758308411,
 x: 0.43893003463745117,
 "score": 0.5974737405776978,
 indexLabel: "nose"
@@ -206,13 +224,13 @@ type: "line",
 dataPoints: [
 
 {
- y: -0.41236191987991333,
+y: -0.41236191987991333,
 x: 0.37934744358062744,
 "score": 0.5863508582115173,
 indexLabel: "left_eye"
 },
 {
- y: -0.3935645818710327,
+y: -0.3935645818710327,
 x: 0.34576040506362915,
 "score": 0.7582522034645081,
 indexLabel: "left_ear"
@@ -224,13 +242,13 @@ type: "line",
 dataPoints: [
 {
 x: 0.5483154654502869,
- y: -0.380584716796875,
+y: -0.380584716796875,
 "score": 0.6939294934272766,
 indexLabel: "right_eye"
 },
 {
 x: 0.5018344521522522,
- y: -0.40469086170196533,
+y: -0.40469086170196533,
 "score": 0.5770164132118225,
 indexLabel: "right_ear"
 }
@@ -241,37 +259,37 @@ type: "line",
 dataPoints: [
 {
 x: 0.09488728642463684,
- y: -1.4059630632400513,
+y: -1.4059630632400513,
 "score": 0.7035307288169861,
 indexLabel: "left_wrist"
 },
 {
 x: 0.13501736521720886,
- y: -1.0009191036224365,
+y: -1.0009191036224365,
 "score": 0.8395420908927917,
 indexLabel: "left_elbow"
 },
 {
 x: 0.23558855056762695,
- y: -0.6093683242797852,
+y: -0.6093683242797852,
 "score": 0.8049867749214172,
 indexLabel: "left_shoulder"
 },
 {
 x: 0.6955552697181702,
- y: -0.5792189836502075,
+y: -0.5792189836502075,
 "score": 0.8740116357803345,
 indexLabel: "right_shoulder"
 },
 {
 x: 0.8170663118362427,
- y: -0.9429570436477661,
+y: -0.9429570436477661,
 "score": 0.8469448089599609,
 indexLabel: "right_elbow"
 },
 {
 x: 0.8664507865905762,
- y: -1.3756768703460693,
+y: -1.3756768703460693,
 "score": 0.7961530685424805,
 indexLabel: "right_wrist"
 }
@@ -283,25 +301,25 @@ dataPoints: [
 
 {
 x: 0.23558855056762695,
- y: -0.6093683242797852,
+y: -0.6093683242797852,
 "score": 0.8049867749214172,
 indexLabel: "left_shoulder"
 },
 {
 x: 0.3413872718811035,
- y: -1.3473975658416748,
+y: -1.3473975658416748,
 "score": 0.8640961050987244,
 indexLabel: "left_hip"
 },
 {
 x: 0.6391734480857849,
- y: -1.3244295120239258,
+y: -1.3244295120239258,
 "score": 0.8855389952659607,
 indexLabel: "right_hip"
 },
 {
 x: 0.6955552697181702,
- y: -0.5792189836502075,
+y: -0.5792189836502075,
 "score": 0.8740116357803345,
 indexLabel: "right_shoulder"
 }
@@ -312,36 +330,36 @@ dataPoints: [
 
 {
 x: 0.37657442688941956,
- y: -2.52108097076416,
+y: -2.52108097076416,
 "score": 0.8049867749214172,
 indexLabel: "left_ankle"
 },{
 x: 0.352548748254776,
- y: -1.961724042892456,
+y: -1.961724042892456,
 "score": 0.8049867749214172,
 indexLabel: "left_knee"
 },
 {
 x: 0.3413872718811035,
- y: -1.3473975658416748,
+y: -1.3473975658416748,
 "score": 0.8640961050987244,
 indexLabel: "left_hip"
 },
 {
 x: 0.6391734480857849,
- y: -1.3244295120239258,
+y: -1.3244295120239258,
 "score": 0.8855389952659607,
 indexLabel: "right_hip"
 },
 {
 x: 0.635826051235199,
- y: -1.9670422077178955,
+y: -1.9670422077178955,
 "score": 0.8740116357803345,
 indexLabel: "right_knee"
 },
 {
 x: 0.6406723260879517,
- y: -2.4928407669067383,
+y: -2.4928407669067383,
 "score": 0.8740116357803345,
 indexLabel: "right_ankle"
 }
@@ -356,8 +374,13 @@ chart1.render();
 <script type="text/javascript" src="https://cdn.canvasjs.com/canvasjs.min.js"></script>
 </head>
 <body>
-<div id="chartContainer" style="height: 600px; max-width: 600px; margin: 0px auto;"></div>
-
-<div id="chartContainer1" style="height: 600px; max-width: 600px; margin: 0px auto;"></div>
+<div class="row">
+<div class="column" style="background-color:#aaa;">
+<div id="chartContainer" style="height: 600px; margin: 0px auto;"></div>
+</div>
+<div class="column" style="background-color:#bbb;">
+<div id="chartContainer1" style="height: 600px; margin: 0px auto;"></div>
+</div>
+</div>
 </body>
 </html>
