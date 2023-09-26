@@ -102,7 +102,7 @@
                  <span class="mdc-button__label">ENABLE WEBCAM</span>
                </button>
                <div style="position: relative;">
-                 <video id="webcam" style="width: 1280px; height: 720px; position: abso" autoplay playsinline></video>
+                 <video id="webcam" style="width: 100%; position: abso" autoplay playsinline></video>
                  <canvas class="output_canvas" id="output_canvas" width="1280" height="720" style="position: absolute; left: 0px; top: 0px;"></canvas>
                </div>
              </div>
@@ -121,7 +121,7 @@
 	<script src="/js/app2.js"></script>
 	<script src="/js/tracker2.js"></script>
 	<script>
-
+        var programming = false;
 		let source = 'camera'; // camera|video|stream		
 		let sourceVideo = '';
 		let defaultVideo = '/videos/1.mp4';
@@ -199,6 +199,8 @@
         if(videoContainer !== undefined && videoContainer.ready){
         if(videoContainer.video.paused){                                 
         videoContainer.video.play();
+        programming = true ;
+        console.log(programming);
         }else{
         videoContainer.video.pause();
         }
@@ -304,7 +306,9 @@
                    
                 }
                 canvasCtx.restore();
+                if(programming === false){
                 console.log(result.landmarks, PoseLandmarker.POSE_CONNECTIONS);
+            }
             });
         }
         

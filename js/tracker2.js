@@ -1313,7 +1313,8 @@ if (tracker.container.video.paused){
      */
     play: function() {
         tracker.container.video.play();
-        
+        programming = false;
+        console.log(programming);
     },
 
     /*
@@ -1321,6 +1322,8 @@ if (tracker.container.video.paused){
      */
     pause: function() {
         tracker.container.video.pause();
+        programming = true;
+        console.log(programming);
     },
 
     /*

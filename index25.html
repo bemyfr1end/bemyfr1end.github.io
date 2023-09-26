@@ -1,0 +1,44 @@
+
+<!DOCTYPE HTML>
+<html>
+<head>
+<script type="text/javascript">
+window.onload = function () {
+	var chart = new CanvasJS.Chart("chartContainer",
+	{
+		title: {
+			text: "Setting lineDashType for axisX"
+		},
+		axisX: {		       
+			lineDashType: "dot",
+			lineThickness: 2
+		},
+		axisY: {
+			gridThickness: 0
+		},
+		data: [
+		{
+			type: "line",
+			dataPoints: [
+				{ x: 10, y: 4 },
+				{ x: 20, y: 3 },
+				{ x: 30, y: 6 },
+				{ x: 40, y: 11 },
+				{ x: 50, y: 21 },
+				{ x: 60, y: 9 },
+				{ x: 70, y: 3 },
+				{ x: 80, y: 4 },
+				{ x: 90, y: 7 }
+			]
+		}
+		]          
+	});
+	chart.render();
+}
+</script>
+<script type="text/javascript" src="https://cdn.canvasjs.com/canvasjs.min.js"></script>
+</head>
+<body>
+<div id="chartContainer" style="height: 300px; max-width: 920px; margin: 0px auto;"></div>
+</body>
+</html>
