@@ -2,12 +2,187 @@
 <!DOCTYPE HTML>
 <html>
 <head>
+<style>
+    .canvasjs-chart-credit{
+        display: none !important;
+    }
+</style>
 <script type="text/javascript">
 window.onload = function () {
 var chart = new CanvasJS.Chart("chartContainer",
 {
 title: {
-text: "Setting lineDashType for axisX"
+text: "Video"
+},
+axisX: {		       
+lineDashType: "dot",
+lineThickness: 2
+},
+axisY: {
+gridThickness: 0
+},
+data: [
+{
+type: "line",
+dataPoints: [
+{            
+y: -533.9428529804497,
+x: 344.04369949943293,
+"score": 0.5974737405776978,
+indexLabel: "nose"
+}]},
+{
+type: "line",
+dataPoints: [
+
+{
+y: -519.6629284484276,
+x: 353.1043630893736,
+"score": 0.5863508582115173,
+indexLabel: "left_eye"
+},
+{
+y: -521.2078047393502,
+x: 369.3384625864846,
+"score": 0.7582522034645081,
+indexLabel: "left_ear"
+}
+]
+},
+{
+type: "line",
+dataPoints: [
+{
+y: -523.1379844588508,
+x: 330.9581947935336,
+"score": 0.6939294934272766,
+indexLabel: "right_eye"
+},
+{
+y: -531.7402231824378,
+x: 319.29205189831333,
+"score": 0.5770164132118225,
+indexLabel: "right_ear"
+}
+]
+},
+{
+type: "line",
+dataPoints: [
+{
+    y: -669.8975534086187,
+    x: 538.9648461758387,
+    "score": 0.7035307288169861,
+    indexLabel: "left_wrist"
+},
+{
+    y: -618.4243339325817,
+    x: 488.4795363990285,
+    "score": 0.8395420908927917,
+    indexLabel: "left_elbow"
+},
+{
+    y: -563.5765096437527,
+    x: 419.088953092079,
+    "score": 0.8049867749214172,
+    indexLabel: "left_shoulder"
+},
+{
+    y: -591.2672479820579,
+    x: 295.2490425422431,
+    "score": 0.8740116357803345,
+    indexLabel: "right_shoulder"
+},
+{
+    y: -675.4573524823124,
+    x: 274.40488359569764,
+    "score": 0.8469448089599609,
+    indexLabel: "right_elbow"
+},
+{
+    y: -744.5172968449345,
+    x: 294.0558167031675,
+    "score": 0.7961530685424805,
+    indexLabel: "right_wrist"
+}
+]
+},
+{
+type: "line",
+dataPoints: [
+
+{
+    y: -563.5765096437527,
+    x: 419.088953092079,
+    "score": 0.8049867749214172,
+    indexLabel: "left_shoulder"
+},
+{
+    y: -689.1822109132509,
+    x: 431.0846933955858,
+    "score": 0.8640961050987244,
+    indexLabel: "left_hip"
+},
+{
+    y: -702.9775215185546,
+    x: 364.84822861638423,
+    "score": 0.8855389952659607,
+    indexLabel: "right_hip"
+},
+{
+    y: -591.2672479820579,
+    x: 295.2490425422431,
+    "score": 0.8740116357803345,
+    indexLabel: "right_shoulder"
+}
+]
+},{
+type: "line",
+dataPoints: [
+
+{
+    y: -874.853959280996,
+    x: 444.0512174549555,
+    "score": 0.8049867749214172,
+    indexLabel: "left_ankle"
+},{
+    y: -768.0988064115821,
+    x: 406.5349681135893,
+    "score": 0.8049867749214172,
+    indexLabel: "left_knee"
+},
+{
+    y: -689.1822109132509,
+    x: 431.0846933955858,
+    "score": 0.8640961050987244,
+    indexLabel: "left_hip"
+},
+{
+    y: -702.9775215185546,
+    x: 364.84822861638423,
+    "score": 0.8855389952659607,
+    indexLabel: "right_hip"
+},
+{
+    y: -817.031002425374,
+    x: 361.3349711616232,
+    "score": 0.8740116357803345,
+    indexLabel: "right_knee"
+},
+{
+    y: -872.9592009843852,
+    x: 413.87327212083926,
+    "score": 0.8740116357803345,
+    indexLabel: "right_ankle"
+}
+]
+}
+]         
+});
+var chart1 = new CanvasJS.Chart("chartContainer1",
+{
+title: {
+text: "Webcam"
 },
 axisX: {		       
 lineDashType: "dot",
@@ -175,11 +350,14 @@ dataPoints: [
 ]         
 });
 chart.render();
+chart1.render();
 }
 </script>
 <script type="text/javascript" src="https://cdn.canvasjs.com/canvasjs.min.js"></script>
 </head>
 <body>
-<div id="chartContainer" style="height: 300px; max-width: 920px; margin: 0px auto;"></div>
+<div id="chartContainer" style="height: 600px; max-width: 600px; margin: 0px auto;"></div>
+
+<div id="chartContainer1" style="height: 600px; max-width: 600px; margin: 0px auto;"></div>
 </body>
 </html>
